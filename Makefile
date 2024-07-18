@@ -83,16 +83,16 @@ help:
 clean: .PHONY
 	rm -rf dist build server/docs server/site
 
-build: web docs cli
+build: web cli
 
-update: web-deps-update cli-deps-update docs-deps-update
+update: web-deps-update cli-deps-update
 	docker pull alpine
 
 docker-dev:
 	docker build \
 		--file ./Dockerfile-build \
-		--tag binwiederhier/ntfy:$(VERSION) \
-		--tag binwiederhier/ntfy:dev \
+		--tag pknw1/ntfy-custom:$(VERSION) \
+		--tag pknw1/ntfy-custom:dev \
 		--build-arg VERSION=$(VERSION) \
 		--build-arg COMMIT=$(COMMIT) \
 		./

@@ -176,6 +176,12 @@ export const SubscriptionPopup = (props) => {
   return (
     <>
       <PopupMenu horizontal={placement} anchorEl={props.anchor} open={!!props.anchor} onClose={props.onClose}>
+        <MenuItem onClick={handleChangeDisplayName}>
+          <ListItemIcon>
+            <Edit fontSize="small" />
+          </ListItemIcon>
+          {t("action_bar_change_display_name")}
+        </MenuItem>
         {showReservationAdd && (
           <MenuItem onClick={handleReserveAdd}>
             <ListItemIcon>
@@ -209,6 +215,18 @@ export const SubscriptionPopup = (props) => {
             {t("action_bar_reservation_delete")}
           </MenuItem>
         )}
+        <MenuItem onClick={handleSendTestMessage}>
+          <ListItemIcon>
+            <Send fontSize="small" />
+          </ListItemIcon>
+          {t("action_bar_send_test_notification")}
+        </MenuItem>
+        <MenuItem onClick={handleClearAll}>
+          <ListItemIcon>
+            <ClearAll fontSize="small" />
+          </ListItemIcon>
+          {t("action_bar_clear_notifications")}
+        </MenuItem>
         {!!subscription.mutedUntil && (
           <MenuItem onClick={() => handleSetMutedUntil(0)}>
             <ListItemIcon>

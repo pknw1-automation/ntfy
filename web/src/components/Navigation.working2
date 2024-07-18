@@ -130,8 +130,45 @@ const NavList = (props) => {
       <Toolbar sx={{ display: { xs: "none", sm: "block" } }} />
       <List component="nav" sx={{ paddingTop: { xs: 0, sm: alertVisible ? 0 : "" } }}>
         {showNotificationPermissionRequired && <NotificationPermissionRequired />}
+        {showNotificationPermissionDenied && <NotificationPermissionDeniedAlert />}
+        {showNotificationBrowserNotSupportedBox && <NotificationBrowserNotSupportedAlert />}
+        {showNotificationContextNotSupportedBox && <NotificationContextNotSupportedAlert />}
         {showNotificationIOSInstallRequired && <NotificationIOSInstallRequiredAlert />}
         {alertVisible && <Divider />}
+        {!showSubscriptionsList && (
+          <ListItemButton onClick={() => navigate(routes.app)} selected={location.pathname === config.app_root}>
+            <ListItemIcon>
+              <ChatBubble />
+            </ListItemIcon>
+            <ListItemText primary={t("nav_button_all_notifications")} />
+          </ListItemButton>
+        )}
+        {showSubscriptionsList && (
+          <>
+            <ListSubheader>{t("nav_topics_title")}</ListSubheader>
+            <ListItemButton onClick={() => navigate(routes.app)} selected={location.pathname === config.app_root}>
+              <ListItemIcon>
+                <ChatBubble />
+              </ListItemIcon>
+              <ListItemText primary={t("nav_button_all_notifications")} />
+            </ListItemButton>
+            <SubscriptionList subscriptions={props.subscriptions} selectedSubscription={props.selectedSubscription} />
+            <Divider sx={{ my: 1 }} />
+          </>
+        )}
+        {session.exists() && (
+          <ListItemButton onClick={handleAccountClick} selected={location.pathname === routes.account}>
+            <ListItemIcon>
+              <Person />
+            </ListItemIcon>
+            <ListItemText primary={t("nav_button_account")} />
+          </ListItemButton>
+        )}
+        {showUpgradeBanner && (
+          // The text background gradient didn't seem to do well with switching between light/dark mode,
+          // So adding a `key` forces React to replace the entire component when the theme changes
+          <UpgradeBanner key={`upgrade-banner-${theme.palette.mode}`} mode={theme.palette.mode} />
+        )}
       </List>
       <SubscribeDialog
         key={`subscribeDialog${subscribeDialogKey}`} // Resets dialog when canceled/closed

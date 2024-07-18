@@ -587,16 +587,6 @@ const NoNotifications = (props) => {
         {t("notifications_none_for_topic_title")}
       </Typography>
       <Paragraph>{t("notifications_none_for_topic_description")}</Paragraph>
-      <Paragraph>
-        {t("notifications_example")}:<br />
-        <tt>
-          {'$ curl -d "Hi" '}
-          {topicShortUrlResolved}
-        </tt>
-      </Paragraph>
-      <Paragraph>
-        <ForMoreDetails />
-      </Paragraph>
     </VerticallyCenteredContainer>
   );
 };
@@ -613,16 +603,6 @@ const NoNotificationsWithoutSubscription = (props) => {
         {t("notifications_none_for_any_title")}
       </Typography>
       <Paragraph>{t("notifications_none_for_any_description")}</Paragraph>
-      <Paragraph>
-        {t("notifications_example")}:<br />
-        <tt>
-          {'$ curl -d "Hi" '}
-          {topicShortUrlResolved}
-        </tt>
-      </Paragraph>
-      <Paragraph>
-        <ForMoreDetails />
-      </Paragraph>
     </VerticallyCenteredContainer>
   );
 };
@@ -652,8 +632,8 @@ const ForMoreDetails = () => (
   <Trans
     i18nKey="notifications_more_details"
     components={{
-      websiteLink: <Link href="https://ntfy.sh" target="_blank" rel="noopener" />,
-      docsLink: <Link href="https://ntfy.sh/docs" target="_blank" rel="noopener" />,
+      websiteLink: <Link href="/" target="_blank" rel="noopener" />,
+      docsLink: <Link href="/" target="_blank" rel="noopener" />,
     }}
   />
 );

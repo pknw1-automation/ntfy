@@ -130,8 +130,16 @@ const NavList = (props) => {
       <Toolbar sx={{ display: { xs: "none", sm: "block" } }} />
       <List component="nav" sx={{ paddingTop: { xs: 0, sm: alertVisible ? 0 : "" } }}>
         {showNotificationPermissionRequired && <NotificationPermissionRequired />}
+        {showNotificationPermissionDenied && <NotificationPermissionDeniedAlert />}
+        {showNotificationBrowserNotSupportedBox && <NotificationBrowserNotSupportedAlert />}
+        {showNotificationContextNotSupportedBox && <NotificationContextNotSupportedAlert />}
         {showNotificationIOSInstallRequired && <NotificationIOSInstallRequiredAlert />}
         {alertVisible && <Divider />}
+        {showUpgradeBanner && (
+          // The text background gradient didn't seem to do well with switching between light/dark mode,
+          // So adding a `key` forces React to replace the entire component when the theme changes
+          <UpgradeBanner key={`upgrade-banner-${theme.palette.mode}`} mode={theme.palette.mode} />
+        )}
       </List>
       <SubscribeDialog
         key={`subscribeDialog${subscribeDialogKey}`} // Resets dialog when canceled/closed
