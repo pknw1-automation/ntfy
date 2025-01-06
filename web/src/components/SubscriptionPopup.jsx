@@ -225,12 +225,6 @@ export const SubscriptionPopup = (props) => {
             {t("action_bar_mute_notifications")}
           </MenuItem>
         )}
-        <MenuItem onClick={handleUnsubscribe}>
-          <ListItemIcon>
-            <RemoveCircle fontSize="small" />
-          </ListItemIcon>
-          {t("action_bar_unsubscribe")}
-        </MenuItem>
       </PopupMenu>
       <Portal>
         <Snackbar

@@ -8,12 +8,12 @@
 var config = {
   base_url: window.location.origin, // Change to test against a different server
   app_root: "/",
-  enable_login: true,
-  enable_signup: true,
+  enable_login: false,
+  enable_signup: false,
   enable_payments: false,
   enable_reservations: true,
-  enable_emails: true,
-  enable_calls: true,
+  enable_emails: false,
+  enable_calls: false,
   enable_web_push: true,
   billing_contact: "",
   web_push_public_key: "",

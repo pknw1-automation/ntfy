@@ -602,7 +602,6 @@ const NoNotificationsWithoutSubscription = (props) => {
         <br />
         {t("notifications_none_for_any_title")}
       </Typography>
-      <Paragraph>{t("notifications_none_for_any_description")}</Paragraph>
     </VerticallyCenteredContainer>
   );
 };
